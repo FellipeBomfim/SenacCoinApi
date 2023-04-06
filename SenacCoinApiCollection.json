@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "526ca395-6041-4b02-bc94-499dc1f04e7e",
+		"name": "SenacCoinApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Buscar SenacCoin por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/senaccoin/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senaccoin",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar todos SenacCoin",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/senaccoin",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senaccoin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar SenacCoin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"saldo\": 1000,\r\n    \"status\": \"ativo\",\r\n    \"usuarioId\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/senaccoin",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senaccoin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar SenacCoin",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"saldo\": 2000,\r\n    \"status\": \"ativo\",\r\n    \"usuarioId\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/senaccoin/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senaccoin",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remover SenacCoin",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
