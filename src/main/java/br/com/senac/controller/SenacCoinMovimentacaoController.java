@@ -62,6 +62,16 @@ public class SenacCoinMovimentacaoController {
 	public ResponseEntity<String> removerMovimentacao(@PathVariable Long id){
 		String msg = mvService.removerMovimentacao(id);
 		if(msg == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(msg);
+		}
+		
+		return ResponseEntity.status(HttpStatus.OK).body(msg);
+	}
+	
+	@PostMapping("/transacao/{tipoTransacao}")
+	public ResponseEntity<String> realizarTransacao(@RequestBody SenacCoinMovimentacao senacCoinMovimentacao, @PathVariable boolean tipoTransacao){
+		String msg = mvService.realizarTransacao(senacCoinMovimentacao, tipoTransacao);
+		if(msg == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
 		

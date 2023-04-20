@@ -22,7 +22,7 @@ public class SenacCoinMovimentacao {
 	private long id;
 	private LocalDate data;
 	private String observacao;
-	private double valor;
+	private int valor;
 	private int status;
 	private long senacCoinId;
 	private String usuarioId;
