@@ -19,11 +19,11 @@ import lombok.NoArgsConstructor;
 public class SenacCoinMovimentacao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private LocalDate data;
 	private String observacao;
 	private int valor;
 	private int status;
-	private long senacCoinId;
+	private Long senacCoinId;
 	private String usuarioId;
 }

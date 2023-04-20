@@ -7,9 +7,21 @@
 	"item": [
 		{
 			"name": "Buscar SenacCoin por ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "localhost:8080/senaccoin/1",
 					"host": [
@@ -49,7 +61,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"saldo\": 1000,\r\n    \"status\": \"ativo\",\r\n    \"usuarioId\": \"1\"\r\n}",
+					"raw": "{\r\n    \"saldo\": 1000,\r\n    \"status\": \"ativo\",\r\n    \"usuarioId\": \"2\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -100,8 +112,142 @@
 		{
 			"name": "Remover SenacCoin",
 			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/senaccoin/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senaccoin",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gastar SenacCoin",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/senaccoin/gastar/?id=12&valor=-300",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senaccoin",
+						"gastar",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "12"
+						},
+						{
+							"key": "valor",
+							"value": "-300"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Movimentacao",
+			"request": {
 				"method": "GET",
-				"header": []
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/senaccoinmovimentacao",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senaccoinmovimentacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Movimentacao por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/senaccoinmovimentacao/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senaccoinmovimentacao",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar Movimentacao",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": \"2012-05-21T14:45:15\",\r\n    \"observacao\": \"teste3\",\r\n    \"valor\": 700,\r\n    \"status\": 1,\r\n    \"senacCoinId\": 12,\r\n    \"usuarioId\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/senaccoinmovimentacao",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senaccoinmovimentacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Realizar Transacao",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": \"2012-05-21T14:45:15\",\r\n    \"observacao\": \"teste3\",\r\n    \"valor\": 700,\r\n    \"status\": 1,\r\n    \"senacCoinId\": 12,\r\n    \"usuarioId\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/senaccoinmovimentacao/transacao/true",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"senaccoinmovimentacao",
+						"transacao",
+						"true"
+					]
+				}
 			},
 			"response": []
 		}
