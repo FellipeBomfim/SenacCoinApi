@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.senac.domain.SenacCoin;
@@ -66,5 +67,32 @@ public class SenacCoinController {
 		}
 		
 		return ResponseEntity.status(HttpStatus.OK).body(msg);
+	}
+	
+	@GetMapping("/usuario/{usuarioId}")
+	public ResponseEntity<SenacCoin> buscarSenacCoinPorUsuarioId(@PathVariable String usuarioId){
+		SenacCoin sc = scService.buscarSenacCoinPorUsuarioId(usuarioId);
+		if(sc == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+		
+		return ResponseEntity.status(HttpStatus.OK).body(sc);
+	}
+	
+	@PutMapping("/gastar")
+	public ResponseEntity<SenacCoin> gastarSenacCoin(@RequestParam(defaultValue = "0") Long id, @RequestParam(defaultValue = "0") int valor){
+		
+		SenacCoin sc = scService.buscarSenacCoinPorId(id);
+		if(valor < 0 && sc.getSaldo() < (valor * (-1))) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+		
+		sc.setSaldo(sc.getSaldo() + valor);
+		sc = scService.atualizarSenacCoin(id, sc);
+		
+		if(sc == null) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+		}
+		return ResponseEntity.status(HttpStatus.OK).body(sc);
 	}
 }

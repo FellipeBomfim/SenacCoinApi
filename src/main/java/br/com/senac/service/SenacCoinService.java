@@ -41,4 +41,32 @@ public class SenacCoinService {
 		repo.deleteById(id);
 		return "Registro removido com sucesso.";
 	}
+	
+	public SenacCoin buscarSenacCoinPorUsuarioId(String usuarioId) {
+		return repo.findByUsuarioId(usuarioId);
+	}
+	
+	public SenacCoin gastarSenacCoin(SenacCoin senacCoin, int valor) {
+		if(senacCoin.getSaldo() < valor) {
+			return null;
+		}
+		
+		senacCoin.setSaldo(senacCoin.getSaldo() - valor);
+		return atualizarSenacCoin(senacCoin.getId(), senacCoin);
+	}
+	
+	public SenacCoin receberSenacCoin(SenacCoin senacCoin, int valor) {
+		senacCoin.setSaldo(senacCoin.getSaldo() + valor);
+		return atualizarSenacCoin(senacCoin.getId(), senacCoin);
+	}
+	
+	public String transacionarSenacCoin(SenacCoin senacCoin1, SenacCoin senacCoin2, int valor) {
+		if(senacCoin1.getUsuarioId() == senacCoin2.getUsuarioId()) {
+			return null;
+		}
+		
+		gastarSenacCoin(senacCoin1, valor);
+		receberSenacCoin(senacCoin2, valor);
+		return "Transação concluda.";
+	}
 }
